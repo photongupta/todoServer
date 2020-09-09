@@ -1,12 +1,7 @@
 const express = require('express');
 const app = express();
 const redis = require('redis');
-const {PORT, HOST} = require('../config');
-const dbClient = redis.createClient({
-  db: 1,
-  port: PORT,
-  host: HOST,
-});
+const dbClient = redis.createClient({db: 1});
 const Database = require('./database');
 const db = new Database(dbClient);
 app.locals.db = db;
