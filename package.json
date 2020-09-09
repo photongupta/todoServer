@@ -5,7 +5,7 @@
   "main": "database.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "export PORT=11523 && HOST=redis://rediscloud:Qz6SGt5XEz0gNWXQafd4Es17JzGAl4pK@redis-11523.c85.us-east-1-2.ec2.cloud.redislabs.com && REDISCLOUD_URL=redis://rediscloud:Qz6SGt5XEz0gNWXQafd4Es17JzGAl4pK@redis-11523.c85.us-east-1-2.ec2.cloud.redislabs.com:11523 && node server.js"
   },
   "repository": {
     "type": "git",
