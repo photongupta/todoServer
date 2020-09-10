@@ -1,9 +1,16 @@
 const express = require('express');
 const app = express();
 const redis = require('redis');
-const dbClient = redis.createClient({db: 1});
+let redisClient;
+if (process.env.REDISCLOUD_URL) {
+  redisClient = redis.createClient(process.env.REDISCLOUD_URL, {
+    no_ready_check: true,
+  });
+} else {
+  redisClient = redis.createClient();
+}
 const Database = require('./database');
-const db = new Database(dbClient);
+const db = new Database(redisClient);
 app.locals.db = db;
 
 const {
