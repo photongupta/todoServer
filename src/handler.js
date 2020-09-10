@@ -8,7 +8,7 @@ const attachTodoDetails = (req, res, next) => {
     .then((todoDetails) => {
       req.app.locals.todoDetails = todoDetails || getDefaultTodoDetails();
     })
-    .then(() => next());
+    .then(next);
 };
 
 const getTodoDetails = (req, res) => {
@@ -22,7 +22,7 @@ const addTask = (req, res) => {
     id: todoDetails.lastId++,
     status: getDefaultStatus(),
   });
-  db.setTodoDetails(todoDetails).then(() => res.end());
+  db.setTodoDetails(todoDetails).then(res.end);
 };
 
 const removeTask = (req, res) => {
@@ -30,13 +30,13 @@ const removeTask = (req, res) => {
   todoDetails.todoList = todoDetails.todoList.filter(
     (todo) => todo.id !== req.body.id
   );
-  db.setTodoDetails(todoDetails).then(() => res.end());
+  db.setTodoDetails(todoDetails).then(res.end);
 };
 
 const resetTodoDetails = (req, res) => {
   const {db} = req.app.locals;
   const todoDetails = getDefaultTodoDetails();
-  db.setTodoDetails(todoDetails).then(() => res.end());
+  db.setTodoDetails(todoDetails).then(res.end);
 };
 
 const updateStatus = (req, res) => {
@@ -45,13 +45,13 @@ const updateStatus = (req, res) => {
   const todo = newTodoList.find((task) => task.id === req.body.id);
   todo.status = getNextStatus(todo.status);
   todoDetails.todoList = newTodoList;
-  db.setTodoDetails(todoDetails).then(() => res.end());
+  db.setTodoDetails(todoDetails).then(res.end);
 };
 
 const updateTitle = (req, res) => {
   const {todoDetails, db} = req.app.locals;
   todoDetails.title = req.body.title;
-  db.setTodoDetails(todoDetails).then(() => res.end());
+  db.setTodoDetails(todoDetails).then(res.end);
 };
 
 module.exports = {
