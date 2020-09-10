@@ -5,9 +5,8 @@ const getRedisClient = function () {
     return redis.createClient(process.env.REDISCLOUD_URL, {
       no_ready_check: true,
     });
-  } else {
-    return redis.createClient();
   }
+  return redis.createClient();
 };
 
 module.exports = {getRedisClient};
