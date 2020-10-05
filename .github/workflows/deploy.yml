@@ -15,6 +15,6 @@ jobs:
    
         with:
           repository: photonogupta/todoApp
-          token: ${{ secrets.my_token }}
+          # token: ${{ secrets.my_token }}
           path: todoApp
        
