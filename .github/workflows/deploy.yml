@@ -14,16 +14,16 @@ jobs:
           npm install
           npm test
 
-      # - name: Create build
-      #   run: |
-      #     pwd
-      #     git clone https://github.com/photongupta/todoApp.git frontend
-      #     cd frontend
-      #     npm install
-      #     npm test
-      #     npm run build
-      #     mv build/ ../backend/public/.
-      #     cd ..
+      - name: Create build
+        run: |
+          pwd
+          git clone https://github.com/photongupta/todoApp.git frontend
+          cd frontend
+          npm install
+          npm test
+          npm run build
+          mv build/ ../backend/public/.
+          cd ..
 
       - name: push to repository
         env:
