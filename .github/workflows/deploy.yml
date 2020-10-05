@@ -8,10 +8,11 @@ jobs:
     steps:
       - name: Checkout to frontend
         uses: actions/checkout@v2
+        env:
+         DEFAULT_BRANCH: master
+   
         with:
           repository: photonogupta/todoApp
           token: ${{ secrets.my_token }}
           path: todoApp
-        env:
-          DEFAULT_BRANCH: master
-   
+     
