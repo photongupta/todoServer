@@ -9,7 +9,7 @@ jobs:
        
       - name: checkout backend
         run: |
-          git clone https://github.com/photongupta/reactServer.git backend
+          git clone https://github.com/photongupta/todoServer.git backend
           cd backend
           npm install
           npm test
