@@ -27,7 +27,7 @@ jobs:
 
       - name: push to repository
         env:
-          token: ${{secrets.MY_TOKEN}}
+          GIT_SSH_COMMAND: 'ssh -o StrictHostKeyChecking=no'
         run: |
           eval "$(ssh-agent -s)"
           ssh-add <<< ${{secrets.DEPLOY_KEY }}
