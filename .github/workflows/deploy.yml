@@ -1,0 +1,14 @@
+name: Deploy to heroku
+on: push
+
+jobs:
+  super-lint:
+    name: start frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout frontend
+        uses: actions/checkout@v2
+
+      - name: Create build
+        run: npm run build
