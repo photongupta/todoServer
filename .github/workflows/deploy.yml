@@ -2,13 +2,11 @@ name: Deploy to heroku
 on: push
 
 jobs:
-  super-lint:
-    name: start frontend
-    runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout frontend
+      - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Create build
-        run: npm run build
+        with:
+          repository: photonogupta/todoApp
+          token: ${{ secrets.my_toke }}
+          path: todoApp
+      
