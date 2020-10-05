@@ -6,14 +6,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+       
       - name: Checkout to frontend
-        uses: actions/checkout@v2
         env:
          DEFAULT_BRANCH: master
+        uses: actions/checkout@v2
+      
    
         with:
           repository: photonogupta/todoApp
           token: ${{ secrets.my_token }}
           path: todoApp
-        run:
-          echo $DEFAULT_BRANCH
+       
