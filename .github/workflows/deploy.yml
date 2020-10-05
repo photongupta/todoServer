@@ -15,4 +15,5 @@ jobs:
           repository: photonogupta/todoApp
           token: ${{ secrets.my_token }}
           path: todoApp
-     
+        run:
+          echo $DEFAULT_BRANCH
