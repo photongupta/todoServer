@@ -2,11 +2,14 @@ name: Deploy to heroku
 on: push
 
 jobs:
+    name: deploy to heroku
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout to frontend
         uses: actions/checkout@v2
         with:
           repository: photonogupta/todoApp
           token: ${{ secrets.my_toke }}
           path: todoApp
-      
+   
