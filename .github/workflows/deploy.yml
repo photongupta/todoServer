@@ -26,6 +26,8 @@ jobs:
           cd ..
 
       - name: push to repository
+        env:
+          token: ${{secrets.MY_TOKEN}}
         run: |
           git clone https://github.com/photongupta/learn_github_actions.git build
           cd build
@@ -36,6 +38,7 @@ jobs:
           git config --global user.email  "58028408+photongupta@users.noreply.github.com"
           git commit -m "Backend: $(../backend && git log -n 1 --format=%B)"
           git push -u origin main
+
 
 
 
