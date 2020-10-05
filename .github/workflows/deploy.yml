@@ -6,11 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout to frontend
-        env:
-         DEFAULT_BRANCH: master
         uses: actions/checkout@v2
         with:
           repository: photongupta/todoApp
           # token: ${{ secrets.my_token }}
           path: todoApp
        
+      - name: Checkout to frontend
+        run: git clone https://github.com/photongupta/todoApp.git
+   
