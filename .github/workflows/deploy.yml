@@ -4,14 +4,40 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout to frontend
-        uses: actions/checkout@v2
-        with:
-          repository: photongupta/todoApp
-          # token: ${{ secrets.my_token }}
-          path: todoApp
        
-      - name: Checkout to frontend
-        run: git clone https://github.com/photongupta/Knowledge-Junction.git frontend
+      - name: checkout backend
+        run: |
+          git clone https://github.com/photongupta/reactServer.git backend
+          cd backend
+          npm install
+          npm test
+
+      - name: Create build
+        run: |
+          pwd
+          git clone https://github.com/photongupta/todoApp.git frontend
+          cd frontend
+          npm install
+          npm test
+          npm run build
+          mv build/ ../backend/public/.
+          cd ..
+
+      - name: push to repository
+        run: |
+          git clone https://github.com/photongupta/learn_github_actions.git build
+          cd build
+          rm -rf *
+          mv ../backend/* .
+          git add .
+          git config --global user.name "photongupta"
+          git config --global user.email  "58028408+photongupta@users.noreply.github.com"
+          git commit -m "Backend: $(../backend && git log -n 1 --format=%B)"
+          git push origin master
+
+
+
+          
    
