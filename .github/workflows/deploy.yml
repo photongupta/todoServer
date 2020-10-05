@@ -35,7 +35,7 @@ jobs:
           git config --global user.name "photongupta"
           git config --global user.email  "58028408+photongupta@users.noreply.github.com"
           git commit -m "Backend: $(../backend && git log -n 1 --format=%B)"
-          git push origin master
+          git push origin main
 
 
 
