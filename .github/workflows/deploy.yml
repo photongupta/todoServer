@@ -2,7 +2,7 @@ name: Deploy to heroku
 on: push
 
 jobs:
-  - name: deploy to heroku
+  deploy to heroku:
     runs-on: ubuntu-latest
 
     steps:
