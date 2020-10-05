@@ -29,6 +29,8 @@ jobs:
         env:
           token: ${{secrets.MY_TOKEN}}
         run: |
+          eval "$(ssh-agent -s)"
+          ssh-add <<< ${{secrets.DEPLOY_KEY }}
           git clone https://github.com/photongupta/learn_github_actions.git build
           cd build
           rm -rf *
