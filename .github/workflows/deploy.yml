@@ -13,5 +13,5 @@ jobs:
           path: todoApp
        
       - name: Checkout to frontend
-        run: git clone https://github.com/photongupta/todoApp.git
+        run: git clone https://github.com/photongupta/todoApp.git frontend
    
