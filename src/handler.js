@@ -1,6 +1,6 @@
 const {getDefaultStatus, getNextStatus} = require('./todoStatus');
 
-const getDefaultTodoDetails = () => ({todoList: [], title: 'Todo', lastId: 0});
+const getDefaultTodoDetails = () => ({todoList: [], title: 'Todo'});
 
 const attachTodoDetails = (req, res, next) => {
   req.app.locals.db
@@ -12,17 +12,16 @@ const attachTodoDetails = (req, res, next) => {
 };
 
 const getTodoDetails = (req, res) => {
-  res.json(JSON.stringify(req.app.locals.todoDetails));
+  res.json(req.app.locals.todoDetails);
 };
 
 const addTask = (req, res) => {
   const {todoDetails, db} = req.app.locals;
-  todoDetails.todoList.push({
-    task: req.body.task,
-    id: todoDetails.lastId++,
-    status: getDefaultStatus(),
+  const {task} = req.body;
+  db.getId().then((id) => {
+    todoDetails.todoList.push({task, id, status: getDefaultStatus()});
+    db.setTodoDetails(todoDetails).then(res.end);
   });
-  db.setTodoDetails(todoDetails).then(res.end);
 };
 
 const removeTask = (req, res) => {
